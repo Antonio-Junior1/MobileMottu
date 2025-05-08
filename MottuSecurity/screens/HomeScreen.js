@@ -1,7 +1,6 @@
 import React from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import Button from '../components/Button';
 import colors from '../theme/colors';
 
 const HomeScreen = ({ navigation }) => {
@@ -14,23 +13,29 @@ const HomeScreen = ({ navigation }) => {
         <ScrollView contentContainerStyle={styles.content}>
           <Text style={styles.title}>Mottu Manager</Text>
           
-          <Button 
-            title="Ver Filiais"
-            onPress={() => navigation.navigate('Branches')}
+          <TouchableOpacity 
             style={styles.button}
-          />
+            onPress={() => navigation.navigate('Filiais')}
+            activeOpacity={0.7}
+          >
+            <Text style={styles.buttonText}>Ver Filiais</Text>
+          </TouchableOpacity>
           
-          <Button 
-            title="Cadastrar Moto"
-            onPress={() => navigation.navigate('MotorcycleRegister')}
+          <TouchableOpacity 
             style={styles.button}
-          />
+            onPress={() => navigation.navigate('Cadastro')}
+            activeOpacity={0.7}
+          >
+            <Text style={styles.buttonText}>Cadastrar Moto</Text>
+          </TouchableOpacity>
           
-          <Button 
-            title="Lista de Motos"
-            onPress={() => navigation.navigate('MotorcyclesList')}
+          <TouchableOpacity 
             style={styles.button}
-          />
+            onPress={() => navigation.navigate('Motos')}
+            activeOpacity={0.7}
+          >
+            <Text style={styles.buttonText}>Lista de Motos</Text>
+          </TouchableOpacity>
         </ScrollView>
       </LinearGradient>
     </View>
@@ -47,6 +52,7 @@ const styles = StyleSheet.create({
   content: {
     padding: 20,
     alignItems: 'center',
+    justifyContent: 'center',
   },
   title: {
     fontSize: 28,
@@ -60,6 +66,21 @@ const styles = StyleSheet.create({
   button: {
     width: '80%',
     marginVertical: 15,
+    backgroundColor: colors.secondary[500],
+    borderRadius: 8,
+    padding: 15,
+    alignItems: 'center',
+    justifyContent: 'center',
+    shadowColor: colors.secondary[500],
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.8,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  buttonText: {
+    color: colors.primary[900],
+    fontWeight: 'bold',
+    fontSize: 16,
   },
 });
 
